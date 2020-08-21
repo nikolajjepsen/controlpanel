@@ -1,0 +1,223 @@
+@import '../../assets/styles/colors';
+
+.player-container {
+	margin: 0px auto;
+	padding: 15px 0 0 0;
+	border-radius: 10px;
+	background: linear-gradient(145deg, #ffffff, #f1f1f1);
+	box-shadow:  16px 16px 32px #dedfe1, 
+			 -16px -16px 32px #f6f7f9;
+			 
+	.album-image {
+		text-align: center;
+		margin-bottom: 8px;
+
+		img {
+			border-radius: 50%;
+			display: inline-block;
+			width: 7vh;
+		}
+	}
+
+	.track {
+		color: $pink;
+		display: flex;
+		font-size: 14px;;
+		justify-content: center;
+	}
+
+	.artists {
+		display: flex;
+		justify-self: center;
+		align-items: center;
+		justify-content: center;
+
+		.artist {
+			color: $muted-grey;
+			text-transform: uppercase;
+			font-size: 12px;
+			display: block;
+
+			&:not(:first-of-type)::before {
+				content: "|";
+				margin: 0 5px;
+			}
+		}
+	}
+
+	.current-device {
+		text-align: center;
+		margin-top: 8px;
+		padding: 3px 0;
+		background-color: $yellow;
+		box-shadow: inset 0px 3px 3px -4px #7c6803;
+		border-bottom-left-radius: 10px;
+		border-bottom-right-radius: 10px;
+		
+		span {
+			color: #fff;
+		}
+	}
+
+	.progress-container {
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		margin-top: 10px;
+
+		span {
+			font-size: .7rem;
+			color: #a7a7a7;
+
+			&:first-of-type {
+				padding: 0 14px 0 28px;
+			}
+
+			&:last-of-type {
+				padding: 0 28px 0 14px;
+				margin-top: -2px;
+			}
+		}
+
+		.progress {
+			flex-grow: 1;
+			height: 0.3rem;
+
+			.progress-bar {
+				background-color: $yellow;
+				transition: width .3s ease;
+			}
+		}
+	}
+
+	.controls {
+		display: flex;
+		justify-content: space-between;
+		align-items: center;
+		padding: 0 28px;
+
+		.icon-list {
+			flex-grow: 1;
+
+			.icon-container {
+				width: max-content;
+				height: max-content;
+
+				&:not(:first-of-type) {
+					margin-left: 3px;
+				}
+
+				.button.player {
+					width: 45px;
+					height: 45px;
+					background-color: $white;
+					box-shadow: 4px 4px 8px #d7d8da,
+						-4px -4px 8px #fdfeff,
+						inset 0 0 0 #ffffff00,
+						inset 0 0 0 #ffffff00;
+				}
+
+				&:hover {
+					.button.player {
+						box-shadow: 
+							0px 0px 0px #ffffff00,
+							0px 0px 0px #ffffff00,
+							inset 8px 8px 16px #d7d8da,
+							inset -8px -8px 16px #fdfeff;
+					}
+
+					svg {
+						color: $pink;
+					}
+				} 
+
+				svg {
+					top: 19px;
+					left: 17.4px;
+				}
+
+				&.small {
+					&:not(:first-of-type) {
+						margin-left: 3px;
+					}
+
+					.button.player {
+						width: 28px;
+						height: 28px;
+					}
+
+					svg {
+						top: 16px;
+						left: 16px;
+					}
+				}
+			}
+
+			.volume-control {
+				padding: 0px;
+				flex-shrink: 1;
+				position: relative;
+				width: 4vw;
+
+				input[type=range].range-slider {
+					&::-webkit-slider-runnable-track {
+						box-sizing: border-box;
+						border: none;
+						height: 4px;
+						background: $grey;
+						border-radius: 2px;
+					}
+
+					&::-moz-range-track {
+						box-sizing: border-box;
+						border: none;
+						height: 4px;
+						background: $grey;
+						border-radius: 2px;
+					}
+
+					&::-moz-range-progress {
+						background: $pink;
+					}
+
+					&::-webkit-slider-thumb {
+						-webkit-appearance: none;
+						box-sizing: border-box;
+						border: none;
+						border-radius: 50%;
+						background: $pink;
+						height: 100px;
+						width: 20px;
+						-webkit-transition: box-shadow 0.5s ease;
+						transition: box-shadow 0.5s ease;
+						margin-top: -8px;
+						cursor: pointer;
+					}
+
+					&::-moz-range-thumb {
+						-webkit-appearance: none;
+						box-sizing: border-box;
+						border: none;
+						border-radius: 50%;
+						background: $pink !important;
+						height: 12px;
+						width: 12px;
+						cursor: pointer;
+						-moz-transition: box-shadow 0.5s ease;
+						transition: box-shadow 0.5s ease;
+					}
+
+					&:not(.disabled):focus::-webkit-slider-thumb, 
+					&:not(.disabled):focus::-moz-range-thumb, 
+					&:not(.disabled):focus::-ms-thumb, 
+					&:not(.disabled):active::-webkit-slider-thumb,
+					&:not(.disabled):active::-moz-range-thumb,
+					&:not(.disabled):active::-ms-thumb {
+						box-shadow: 0 0 0 0.2rem #c8366e41 !important;
+					}
+
+				}
+			}
+		}
+	}
+}

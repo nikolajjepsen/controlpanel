@@ -1,0 +1,75 @@
+@import '../../assets/styles/colors';
+
+.light {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    padding: 6px 10px;
+    border-radius: 6px;
+    background: $charcoal;
+    box-shadow: 6px 6px 14px #2f4350,
+		-6px -6px 14px #2f4350,
+		inset 0 0 0 #ffffff00,
+		inset 0 0 0 #ffffff00;
+    margin: 10px 0;
+    transition: box-shadow 200ms ease-in-out;
+    cursor: pointer;
+
+    .light-state-badge {
+        padding: 7px;
+        border-radius: 50%;
+        background-color: $white;
+        display: grid;
+        place-items: center;
+        margin-right: 6px;
+
+        svg {
+            width: 22px;
+            height: 22px;
+            color: $muted-grey;
+            transition: color 150ms ease-in;
+        }
+    }
+
+    &.unreachable {
+        cursor: not-allowed;
+
+        .light-state-badge {
+            background-color: #ffd4d4;
+        }
+
+        &:hover {
+            .light-state-badge svg {
+                color: $muted-grey;
+            }
+        }
+    }
+
+    &.active {
+        .light-state-badge svg {
+            color: #c8366f;
+        }
+
+        .light-details .name {
+            color: $pink;
+        }
+    }
+
+    &:hover {
+        .light-state-badge svg {
+            color: $pink;
+        }
+    }
+
+    .light-details {
+        color: $white;
+        font-size: 12px;
+        transition: color 200ms ease-in;
+
+        .name {
+            font-size: 13px;
+            font-weight: 600;
+            display: block;
+        }
+    }
+}

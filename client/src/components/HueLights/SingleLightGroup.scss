@@ -1,0 +1,99 @@
+@import '../../assets/styles/colors';
+
+.single-light-group {
+	color: $white;
+	
+	h1, h2, h3 {
+		color: $white;
+	}
+
+	h2 {
+		font-weight: 200;
+    	font-size: 1.7rem;
+	}
+
+	h3 {
+		font-weight: 200;
+		font-size: 1.3rem;
+	}
+
+	.exit-single-group-container {
+		position: absolute;
+		top: 1.7rem;
+		right: 15px;
+	}
+
+	
+
+}
+
+
+.single-light-group .icon-list.button-list {
+    justify-content: flex-start;
+    position: relative;
+}
+.single-light-group .icon-list.button-list .icon-container:not(:first-of-type) {
+	margin-left: 15px;
+}
+.single-light-group .icon-list.button-list .icon-container {
+	width: max-content;
+	height: max-content;
+}
+.single-light-group .icon-list.button-list .icon-container .button {
+	background-color: $charcoal;
+	box-shadow: 8px 8px 16px #2b3c48,
+		-8px -8px 16px #3a5262,
+		inset 0 0 0 #ffffff00,
+		inset 0 0 0 #ffffff00;
+}
+.single-light-group .icon-list.button-list .icon-container.power .button {
+	width: 55px;
+	height: 55px;
+}
+.single-light-group .icon-list.button-list .icon-container.power svg {
+	top: 15px;
+    left: 16px;
+    width: 45px;
+    height: 45px;
+}
+.single-light-group .exit-single-group-container .icon-list {
+	justify-content: flex-end;
+}
+
+.single-light-group .icon-list .button-list .icon-container.exit {
+	display: flex;
+	justify-content: flex-end;
+	justify-self: right;
+}
+.single-light-group .icon-list.button-list .icon-container.exit .button {
+	width: 55px;
+	height: 55px;
+}
+.single-light-group .icon-list.button-list .icon-container.exit svg {
+	top: 18px;
+    left: 19px;
+    width: 38px;
+    height: 38px;
+}
+
+.single-light-group .icon-list.button-list .icon-container:hover .button,
+.single-light-group .icon-list.button-list .icon-container.active .button
+ {
+	background-color: $charcoal;
+	box-shadow: 
+		0px 0px 0px #ffffff00,
+		0px 0px 0px #ffffff00,
+		inset 8px 8px 16px #2b3c48,
+		inset -8px -8px 16px #3a5262;
+}
+.single-light-group .icon-list.button-list .icon-container:hover svg {
+	color: $pink;
+}
+.single-light-group .icon-list.button-list .icon-container.active svg {
+	color: $pink;
+}
+.single-light-group .icon-list.button-list .icon-container .button.loading {
+	box-shadow: 8px 8px 16px #2b3c48,
+	0px -2px 19px $pink;
+	animation: rotate 2s linear infinite;
+}

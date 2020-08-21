@@ -1,0 +1,14 @@
+.light-group {
+    padding: 10px;
+    margin: 0 0 20px 0;
+    border-radius: 10px;
+    background: linear-gradient(145deg, #ffffff, #f1f1f1);
+    box-shadow: 16px 16px 32px #dedfe1, -16px -16px 32px #f6f7f9;
+    width: 100%;
+    cursor: pointer;
+
+    p {
+        margin: 0;
+        padding: 0;
+    }
+}
