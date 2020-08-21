@@ -1,0 +1,25 @@
+{
+  "name": "new-tab",
+  "version": "1.0.0",
+  "description": "Dashboard with intented use of replacing new tab; widgets for calendar, mail, tasks, shopping list.",
+  "main": "index.js",
+  "scripts": {
+    "start": "nodemon index.js"
+  },
+  "author": "Nikolaj Jepsen",
+  "license": "MIT",
+  "dependencies": {
+    "body-parser": "^1.19.0",
+    "cors": "^2.8.5",
+    "dotenv": "^8.2.0",
+    "express": "^4.17.1",
+    "express-logger": "0.0.3",
+    "googleapis": "^54.1.0",
+    "mongodb": "^3.5.9",
+    "mongoose": "^5.9.24",
+    "morgan": "^1.10.0",
+    "node-hue-api": "^4.0.7",
+    "sonos": "^1.13.2",
+    "spotify-web-api-node": "^4.0.0"
+  }
+}
