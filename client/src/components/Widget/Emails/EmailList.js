@@ -7,7 +7,7 @@ const EmailList = (props) => {
     // Loading is set to false before data was updated???
     // May need a useEffect to disable loading animations and renderers, however that's causing issues as well.
     // ^ TODO ^ FIX
-    if (items[0].from) {
+    if (items) {
         return (
             <div className="widget-container">
                 <div className="header emails">
@@ -20,6 +20,7 @@ const EmailList = (props) => {
                                 from={item.from}
                                 date={item.date}
                                 subject={item.subject}
+                                key={item.from+item.date}
                             />
                         ))
                     }

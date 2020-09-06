@@ -34,7 +34,7 @@ const EmailSender = (props) => {
     // Unrealistic case of no email and no sender name.
     } else {
         return (
-            <span className="from">Unable to determine sender</span>
+            <span className="from">None</span>
         )
     }
 }

@@ -8,24 +8,13 @@ import backend from '../../config/axios.config';
 import { ButtonList, Button } from '../Button/Button';
 import './Authorization.css';
 
-const ActiveAuthorizations = () => {
-    const [activeAuthorizations, setActiveAuthorizations] = useState([]);
-
-    useEffect(() => {
-        backend.get(`/auth/getCurrent`)
-            .then(response => {
-                // Returns an array of connected APIs (google | spotify atm)
-                setActiveAuthorizations(response.data)
-            })
-            .catch(err => { console.log(err)});
-    }, []);
-
+const Authorization = ({ enabled }) => {
     return (
         <ButtonList listClass="auth">
             <Button
                 buttonClass="auth"
                 buttonSize="small"
-                isActive={activeAuthorizations.includes('google')}
+                isActive={enabled.includes('google')}
                 isLoading={false}
                 icon={
                     <svg xmlns="http://www.w3.org/2000/svg" className="google" viewBox="0 0 488 512" width="18" height="18">
@@ -36,7 +25,7 @@ const ActiveAuthorizations = () => {
             <Button
                 buttonClass="auth"
                 buttonSize="small"
-                isActive={activeAuthorizations.includes('spotify')}
+                isActive={enabled.includes('spotify')}
                 isLoading={false}
                 icon={
                     <svg xmlns="http://www.w3.org/2000/svg" className="spotify" viewBox="0 0 496 512" width="18" height="18">
@@ -48,4 +37,4 @@ const ActiveAuthorizations = () => {
         
     );
 }
-export default ActiveAuthorizations;
+export default Authorization;

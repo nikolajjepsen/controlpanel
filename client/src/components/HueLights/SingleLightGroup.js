@@ -58,7 +58,7 @@ const SingleLightGroup = (props) => {
     }, [props.id]);
 
     useEffect( () => {
-        backend.get(`/hue/groups/get/${props.id}`)
+        backend.get(`/hue/groups/${props.id}`)
             .then((response) => {
                 setCurrentLightGroup(response.data._data);
                 return backend.get(`/hue/lights/list?lightIds=${response.data._data.lights.join()}`);
@@ -73,7 +73,7 @@ const SingleLightGroup = (props) => {
 
     return (
             <div className="single-light-group">
-                <div class="exit-single-group-container">
+                <div className="exit-single-group-container">
                 <ButtonList listClass="button-list">
                         <Button
                             buttonClass="exit"
@@ -106,7 +106,7 @@ const SingleLightGroup = (props) => {
                             </Col>
                             {currentGroupLights &&
                                 currentGroupLights.map((light) => (
-                                    <Col lg={4} md={4} sm={6} xs={6}>
+                                    <Col lg={4} md={4} sm={6} xs={6} key={light._data.id}>
                                         <Light 
                                             name={light._data.name} 
                                             currentLightState={light._data.state.on ? 'on' : 'off'}
@@ -125,7 +125,7 @@ const SingleLightGroup = (props) => {
                             </Col>
                             {currentGroupScenes &&
                                 currentGroupScenes.map((scene) => (
-                                    <Col lg={3} md={4} sm={4} xs={6}>
+                                    <Col lg={3} md={4} sm={4} xs={6} key={scene._data.id}>
                                         <Scene 
                                             onClick={activateScene}
                                             name={scene._data.name} 
