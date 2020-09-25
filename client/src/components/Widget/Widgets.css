@@ -239,20 +239,3 @@
 	0px -2px 19px #c8366f;
 	animation: rotate 2s linear infinite;
 }
-
-
-@keyframes check {
-	50% {
-		transform: scale(1.2);
-	}
-}
-
-@keyframes rotate {
-	0% {
-		transform: rotateZ(0);
-	}
-
-	100% {
-		transform: rotateZ(360deg);
-	}
-}

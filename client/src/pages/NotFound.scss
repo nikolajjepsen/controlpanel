@@ -1,0 +1,23 @@
+#not-found {
+    .not-found-container{
+        display: flex;
+        width: 100vw;
+        min-height: 50vh;
+        justify-content: center;
+        flex-direction: row;
+        align-items: center;
+
+        span.error-code {
+            font-size: 22px;
+            color: #ffffff;
+            padding-right: 12px;
+        }
+        span.divider {
+            font-size: 22px;
+        }
+        span.message {
+            font-size: 18px;
+            padding-left: 12px;
+        }
+    }
+}

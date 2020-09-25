@@ -2,6 +2,8 @@ const fs = require('fs');
 const path = require('path');
 const hue = require('node-hue-api').v3;
 
+const FavoriteScene = require('./../../models/favorite-scenes.model.js');
+
 getConfig = () => {
     const relativePathToConfig = path.join(__dirname, 'hue.config.json');
     let config;
@@ -120,7 +122,7 @@ const toggleSingleLight = async (req, res, next) => {
             // set the current light state on light to the opposite of the current state
             return api.lights.setLightState(req.params.lightId, { on: !lightState.on });
         })
-        .then((light) => {
+        .then(() => {
             res.send({
                 message: 'Light has been toggled'
             })
@@ -219,14 +221,35 @@ const getGroupScenes = async (req, res, next) => {
         .then((api) => {
             return api.scenes.getAll();
         })
-        .then((scenes) => {
+        .then(async (scenes) => {
             // first filter the scenes to remove all the scenes attached to another group than what's needed
             let groupScenes = scenes.filter((scene) => (scene._data.group == req.params.groupId));
             // then remove the scenes where their name include 'storage' as they don't seem to change anything?
             groupScenes = groupScenes.filter( (scene) => !scene._data.name.includes('storage'));
 
+            groupScenes = await Promise.all(
+                groupScenes.map(async (scene) => {
+                    delete scene._attributes;
+                    delete scene._populationData;
+                    let data = scene._data;
+                    const result = await FavoriteScene.exists({ sceneId: data.id });
+                    return Object.assign(data, { favorite: result });
+                })
+            );
             res.send(groupScenes);
-        })
+        });
+}
+
+const getScene = async sceneId => {
+    const config = getConfig();
+    const ip = await discoverBridge();
+
+    if (!ip) {
+      return next(new Error('Unable to find Hue Bridge IP'));
+    }
+
+    const api = await hue.api.createLocal(ip).connect(config.username);
+    return api.scenes.getScene(sceneId);
 }
 
 const activateScene = async (req, res, next) => {
@@ -242,12 +265,66 @@ const activateScene = async (req, res, next) => {
             return api.scenes.activateScene(req.params.sceneId);
         })
         .then(() => {
-            res.send({
+            res.json({
                 message: 'activated scene.'
             });
         })
 }
 
+const listFavoriteScenes = async (req, res, next) => {
+    let favorites;
+    try {
+        favorites = await FavoriteScene.find();
+    } catch (error) {
+        next(new Error('Unable to fetch favorite scenes: ' + JSON.stringify(error)));
+    }
+
+    if (favorites.length == 0) {
+        return res.status(404).json([]);
+    }
+
+    const scenes = await Promise.all(
+        favorites.map(favorite => getScene(favorite.sceneId))
+    );
+
+    res.json(scenes);
+}
+
+const toggleFavoriteScene = async (req, res, next) => {
+    if (!req.body.sceneId) {
+      return next(new Error('Please include a scene ID'))
+    }
+    const foundFavoriteScene = await FavoriteScene.find({sceneId: req.body.sceneId});
+    console.log(foundFavoriteScene);
+    if (foundFavoriteScene.length > 0) {
+        try {
+            await FavoriteScene.deleteOne( {sceneId: req.body.sceneId} );
+            return res.json({
+                message: 'Favorite scene toggled off'
+            });
+        } catch (error) {
+            return res.json({
+                message: 'Unable to toggle scene off.'
+            });
+        }
+    }
+
+    const scene = new FavoriteScene({
+        sceneId: req.body.sceneId,
+    });
+    scene
+        .save()
+        .then((createdScene) => {
+            res.status(201).json({
+            message: 'Favorite scene toggled on.',
+            insertedObject: createdScene,
+            });
+        })
+        .catch((err) => {
+            next(new Error('Unable to save new favorite scene.' + JSON.stringify(err)));
+        }
+    );
+}
 
 
 
@@ -256,12 +333,14 @@ const activateScene = async (req, res, next) => {
 
 
 module.exports = {
-    setup,
-    listGroups,
-    getGroup,
-    getGroupScenes,
-    activateScene,
-    toggleGroupActiveState,
-    listLights,
-    toggleSingleLight
-}
+  setup,
+  listGroups,
+  getGroup,
+  getGroupScenes,
+  activateScene,
+  toggleGroupActiveState,
+  listLights,
+  toggleSingleLight,
+  listFavoriteScenes,
+  toggleFavoriteScene,
+};

@@ -5,12 +5,13 @@
     flex-wrap: wrap;
     align-items: center;
     padding: 6px 10px;
-    border-radius: 6px;
-    background: $charcoal;
-    box-shadow: 6px 6px 14px #2f4350,
-		-6px -6px 14px #2f4350,
-		inset 0 0 0 #ffffff00,
-		inset 0 0 0 #ffffff00;
+    border-radius: 3px;
+    background: #f8f8f8;
+    box-shadow:
+        2px 2px 7px #d7d8da,
+        -2px -2px 7px #fdfeff,
+        inset 0 0 0 #ffffff00,
+        inset 0 0 0 #ffffff00;
     margin: 10px 0;
     transition: box-shadow 200ms ease-in-out;
     cursor: pointer;
@@ -47,28 +48,43 @@
 
     &.active {
         .light-state-badge svg {
-            color: #c8366f;
+            color: $pink;
         }
 
         .light-details .name {
-            color: $pink;
+            color: $charcoal;
         }
     }
 
     &:hover {
+        box-shadow: 
+            2px 2px 7px #ffffff00,
+            -2px -2px 7px #ffffff00,
+            inset -2px -2px 7px #d7d8da,
+            inset -2px -2px 7px #fdfeff;
+        
+        &.unreachable {
+            box-shadow:
+                2px 2px 7px #d7d8da,
+                -2px -2px 7px #fdfeff,
+                inset 0 0 0 #ffffff00,
+                inset 0 0 0 #ffffff00;
+        }
+
         .light-state-badge svg {
             color: $pink;
         }
     }
 
     .light-details {
-        color: $white;
+        color: $charcoal;
         font-size: 12px;
+        font-weight: 200;
         transition: color 200ms ease-in;
 
         .name {
-            font-size: 13px;
-            font-weight: 600;
+            font-size: 12px;
+            font-weight: 400;
             display: block;
         }
     }

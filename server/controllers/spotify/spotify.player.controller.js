@@ -164,7 +164,7 @@ const setVolume = (req, res) => {
     spotify.refreshAccessToken().then((data) => {
         spotify.setAccessToken(data.body.access_token);
         spotify.setVolume(volumePercentage)
-            .then((data) => {
+            .then(() => {
                 res.send({
                     message: 'Volume set to: ' + volumePercentage
                 });

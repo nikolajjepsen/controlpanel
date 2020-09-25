@@ -5,13 +5,12 @@ import './Light.scss';
 import 'react-bootstrap-range-slider/dist/react-bootstrap-range-slider.css';
 
 const Light = (props) => {
-
     return (
         <div 
             id={`light_${props.id}`} 
             className={`light ${props.reachable ? '' : 'unreachable'} ${props.currentLightState === 'on' ? 'active' : ''}`}
             // send onClick to parent onClick handler
-            onClick={() => props.onClick(props.id)}
+            onClick={(e) => props.reachable ? props.onClick(e, props.id) : false}
         >
             <div className="light-state-badge">
                 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 512" className="on">
@@ -44,5 +43,4 @@ const Light = (props) => {
         </div>
     )
 }
-
 export default Light;

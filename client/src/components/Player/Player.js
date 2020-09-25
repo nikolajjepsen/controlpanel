@@ -14,7 +14,7 @@ const Player = () => {
     const [currentProgressMs, setCurrentProgressMs] = useState(0);
     const [isSpotifyControllable, setIsSpotifyControllable] = useState(false);
     const [isSonosControllable, setIsSonosControllable] = useState(false);
-    const [sonosPlayerHost, setSonosPlayerHost] = useState('');
+    const [sonosPlayerHost, setSonosPlayerHost] = useState(false);
     const [currentVolume, setCurrentVolume] = useState(0);
     const [updateVolume, setUpdateVolume] = useState(false);
 
@@ -39,26 +39,27 @@ const Player = () => {
                         setIsSonosControllable(false);
                     // If the device ID is null, we check if Sonos is currently playing.
                     } else {
-                        backend.get(`/sonos/devices/getAll`)
-                            .then((sonosDevicesResponse) => {
-                                if (sonosDevicesResponse.status === 200) {
-                                    for (const deviceGroup of sonosDevicesResponse.data.groups) {
-                                        // We loop through the devices (they get grouped by Sonos, even if they are a single device)
-                                        if (deviceGroup.Name === response.data.device.name && response.data.device.is_active) {
-                                            // If the Sonos group name is equal that of Spotify's device name and the device is active,
-                                            // We make the player controllable by Sonos, and uncontrollable by Spotify.
-                                            // Basically controls API endpoint is determined here as we base all conditionals around these states. 
-                                            setIsSonosControllable(true);
-                                            setSonosPlayerHost(deviceGroup.host);
-                                            setIsSpotifyControllable(false);
+                            backend.get(`/sonos/devices`)
+                                .then((sonosDevicesResponse) => {
+                                    if (sonosDevicesResponse.status === 200) {
+                                        for (const deviceGroup of sonosDevicesResponse.data.groups) {
+                                            // We loop through the devices (they get grouped by Sonos, even if they are a single device)
+                                            if (deviceGroup.Name === response.data.device.name && response.data.device.is_active) {
+                                                // If the Sonos group name is equal that of Spotify's device name and the device is active,
+                                                // We make the player controllable by Sonos, and uncontrollable by Spotify.
+                                                // Basically controls API endpoint is determined here as we base all conditionals around these states. 
+                                                setIsSonosControllable(true);
+                                                setSonosPlayerHost(deviceGroup.host);
+                                                setIsSpotifyControllable(false);
+                                            }
                                         }
                                     }
+                                }).catch((err) => {
+                                    setIsSpotifyControllable(false);
+                                    setIsSonosControllable(false);
+                                    console.log('Unable to fetch devices: ' + err);
                                 }
-                            }).catch(
-                                (err) => {
-                                    // throw Error('Unable to fetch devices: ' + err.message);
-                            }
-                        );
+                            );
                     }
                 }
             }).catch((err) => {
@@ -225,7 +226,7 @@ const Player = () => {
         <>
             {
                 playerActive && currentTrack &&
-                <div className="player-container">
+                <div className="player-container mb-4">
                     <div className="album-image">
                         <img src={currentTrack.album_image} alt={currentTrack.track} />
                     </div>

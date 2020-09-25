@@ -2,21 +2,26 @@
 Does not require auth as we're controlling directly from network
 */
 
-const { Sonos, DeviceDiscovery } = require('sonos')
+const { Sonos } = require('sonos');
+const DeviceDiscovery = require('sonos').AsyncDeviceDiscovery;
 
 // event on all found...
 const getDevices = (req, res) => {
-    DeviceDiscovery().once('DeviceAvailable', (device) => {
-        console.log('found device at ' + device.host)
+    const discovery = new DeviceDiscovery();
+    discovery.discover().then((device) => {
+        sonos = new Sonos(device.host);
+        sonos.getAllGroups().then((groups) => {
+          res.send({
+            groups,
+          });
+        });
+    }).catch(err => {
+        console.log(err);
+        res.status(404).send({
+            message: 'Unable to find Sonos device'
+        });
 
-        // get all groups
-        sonos = new Sonos(device.host)
-        sonos.getAllGroups().then(groups => {
-            res.send({
-                groups
-            })
-        })
-    })
+    });
 }
 
 const getCurrentState = (req, res) => {

@@ -1,11 +1,23 @@
-import React, { useState } from 'react';
-import backend from '../../../config/axios.config';
-import CreateTask from './Create';
-import Task from './Task';
+import React, { useState, useEffect } from 'react';
+import backend from '../../config/axios.config';
+import TaskCreate from './TaskCreate';
+import TaskItem from './TaskItem';
 
-const TasksList = (props) => {
+import './Task.scss';
+
+const TasksList = () => {
     const [currentSubTab, setCurrentSubTab] = useState('task')
-    const [items, setItems] = useState(props.items);
+    const [items, setItems] = useState(false);
+
+    useEffect(() => {
+        const fetchTasks = async () => {
+            const tasks = await backend.get('/tasks/')
+            console.log(tasks);
+            setItems(tasks.data);
+        }
+        fetchTasks();
+    }, [])
+
 
     const handleDelete = async (taskId) => {
         console.log('Delete task', taskId);
@@ -46,8 +58,8 @@ const TasksList = (props) => {
     }
 
     return (
-        <div className="widget-container">
-            <div className="header tasks">
+        <div className="tasks">
+            <div className="navigation">
                 <h2
                     className={`nav${currentSubTab === 'task' ? ' active' : ''}`}
                     onClick={() => setCurrentSubTab('task')}
@@ -62,23 +74,25 @@ const TasksList = (props) => {
                     Shopping
                 </h2>
             </div>
-            <div className="body tasks">
+            <div className="list">
                 {
-                    items.map((element) => (
-                        (element.type === currentSubTab) ? <Task
-                            id={element._id}
-                            title={element.title}
-                            amount={element.amount}
-                            key={element._id}
-                            type={currentSubTab}
-                            completed={element.completed}
-                            onCompleted={handleCompleted}
-                            onDelete={handleDelete}
-                        />
-                        : ''
-                    ))
+                    items && (
+                        items.map((element) => (
+                            (element.type === currentSubTab) ? <TaskItem
+                                id={element._id}
+                                title={element.title}
+                                amount={element.amount}
+                                key={element._id}
+                                type={currentSubTab}
+                                completed={element.completed}
+                                onCompleted={handleCompleted}
+                                onDelete={handleDelete}
+                            />
+                            : ''
+                        ))
+                    )
                 }
-                <CreateTask
+                <TaskCreate
                     type={currentSubTab}
                     onCreate={handleCreate}
                 />
