@@ -1,7 +1,7 @@
 import React from 'react';
 
 import { Heart, Power } from 'react-feather';
-import backend from "../../config/axios.config";
+import backend from '../../config/axios.config';
 
 import './Scene.scss';
 
@@ -12,9 +12,9 @@ const Scene = (props) => {
 			sceneId: sceneId,
 		});
 		props.onFavorite(sceneId);
-	}
+	};
 
-    return (
+	return (
 		<div className="scene mb-2">
 			<div className="scene-details" onClick={() => props.onClick(props.id)}>
 				<div className="activate-badge">
@@ -22,11 +22,14 @@ const Scene = (props) => {
 				</div>
 				<span className="name">{props.name}</span>
 			</div>
-			<div className={`icon-container ${props.favorite ? 'favorited' : ''}`} onClick={() => toggleFavorite(props.id)}>
+			<div
+				className={`icon-container ${props.favorite ? 'favorited' : ''}`}
+				onClick={() => toggleFavorite(props.id)}
+			>
 				<Heart />
 			</div>
 		</div>
 	);
-}
+};
 
 export default Scene;

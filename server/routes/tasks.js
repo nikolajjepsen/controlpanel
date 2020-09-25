@@ -1,11 +1,11 @@
 const express = require('express');
 const router = express.Router();
 const {
-    create,
-    findAll,
-    findOne,
-    toggleCompleted,
-    deleteOne 
+	create,
+	findAll,
+	findOne,
+	toggleCompleted,
+	deleteOne,
 } = require('../controllers/tasks.controller');
 
 router.route('/').post(create);

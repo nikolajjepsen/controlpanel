@@ -1,14 +1,10 @@
 import React from 'react';
-import {
-	BrowserRouter as Router,
-	Switch,
-	Route
-} from "react-router-dom";
-import { Container, Col, Row } from 'react-bootstrap'
+import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
+import { Container, Col, Row } from 'react-bootstrap';
 
-import "bootstrap/dist/css/bootstrap.min.css";
-import "./App.scss";
-import "./components/Button/Button.css";
+import 'bootstrap/dist/css/bootstrap.min.css';
+import './App.scss';
+import './components/Button/Button.css';
 
 import Home from './pages/Home';
 import NotFound from './pages/NotFound';
@@ -45,6 +41,6 @@ const App = () => {
 			</Router>
 		</Container>
 	);
-}
+};
 
 export default App;

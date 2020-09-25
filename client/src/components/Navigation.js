@@ -1,17 +1,17 @@
 import React from 'react';
-import { Link } from "react-router-dom";
+import { Link } from 'react-router-dom';
 
-import { 
-    Home as HomeIcon, 
-    List as ListIcon,
-    Mail as MailIcon, 
-    Calendar as CalendarIcon 
+import {
+	Home as HomeIcon,
+	List as ListIcon,
+	Mail as MailIcon,
+	Calendar as CalendarIcon,
 } from 'react-feather';
 
 import './Navigation.scss';
 
 const Navigation = () => {
-    return (
+	return (
 		<nav>
 			<ul>
 				<li className="nav__item">
@@ -37,6 +37,6 @@ const Navigation = () => {
 			</ul>
 		</nav>
 	);
-}
+};
 
 export default Navigation;

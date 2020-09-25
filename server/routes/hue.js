@@ -1,18 +1,17 @@
 const express = require('express');
 const router = express.Router();
 const {
-  setup,
-  listLights,
-  toggleSingleLight,
-  listGroups,
-  getGroup,
-  getGroupScenes,
-  toggleGroupActiveState,
-  activateScene,
-  listFavoriteScenes,
-  toggleFavoriteScene,
+	setup,
+	listLights,
+	toggleSingleLight,
+	listGroups,
+	getGroup,
+	getGroupScenes,
+	toggleGroupActiveState,
+	activateScene,
+	listFavoriteScenes,
+	toggleFavoriteScene,
 } = require('../controllers/hue/hue.controller');
-
 
 router.route('/setup').get(setup);
 router.route('/lights/list').get(listLights);

@@ -1,15 +1,14 @@
 const express = require('express');
 const router = express.Router();
 const {
-    getDevices,
-    getCurrentState,
-    play,
-    pause,
-    skip,
-    setVolume,
-    getSpotifyConnect,
+	getDevices,
+	getCurrentState,
+	play,
+	pause,
+	skip,
+	setVolume,
+	getSpotifyConnect,
 } = require('../controllers/sonos/sonos.player.controller');
-
 
 router.route('/devices').get(getDevices);
 router.route('/player/:ip/currentState').get(getCurrentState);

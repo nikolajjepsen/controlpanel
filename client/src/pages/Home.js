@@ -1,18 +1,17 @@
 import React from 'react';
 
-import Row from "react-bootstrap/Row";
-import Col from "react-bootstrap/Col";
+import Row from 'react-bootstrap/Row';
+import Col from 'react-bootstrap/Col';
 
-import Clock from "./../components/Clock/Clock";
+import Clock from './../components/Clock/Clock';
 import TaskList from '../components/Tasks/TaskList';
 
-import Player from "./../components/Player/Player.js";
-import LightGroupList from "./../components/Lights/LightGroupList";
-import FavoriteScenesList from "./../components/Lights/FavoriteScenesList";
-
+import Player from './../components/Player/Player.js';
+import LightGroupList from './../components/Lights/LightGroupList';
+import FavoriteScenesList from './../components/Lights/FavoriteScenesList';
 
 const Home = () => {
-    return (
+	return (
 		<>
 			<Row>
 				<Col lg={12}>

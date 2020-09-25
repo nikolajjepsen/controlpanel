@@ -1,23 +1,20 @@
 const express = require('express');
 const router = express.Router();
 const {
-    getCurrentlyPlaying,
-    play,
-    pause,
-    devices,
-    setVolume,
-    skip,
+	getCurrentlyPlaying,
+	play,
+	pause,
+	devices,
+	setVolume,
+	skip,
 } = require('../controllers/spotify/spotify.player.controller');
 
-const {
-    authorize,
-    storeToken
-} = require('../controllers/spotify/spotify.auth.controller');
+const { authorize, storeToken } = require('../controllers/spotify/spotify.auth.controller');
 
 router.route('/authorize').get(authorize);
 router.route('/hello').get((req, res) => {
-    console.log('HEYA');
-    res.send('Hello!');
+	console.log('HEYA');
+	res.send('Hello!');
 });
 router.route('/callback').get(storeToken);
 
