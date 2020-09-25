@@ -13,13 +13,14 @@
     "cors": "^2.8.5",
     "dotenv": "^8.2.0",
     "express": "^4.17.1",
-    "express-logger": "0.0.3",
     "googleapis": "^54.1.0",
-    "mongodb": "^3.5.9",
-    "mongoose": "^5.9.24",
+    "mongodb": "^3.6.2",
+    "mongoose": "^5.10.7",
     "morgan": "^1.10.0",
-    "node-hue-api": "^4.0.7",
-    "sonos": "^1.13.2",
-    "spotify-web-api-node": "^4.0.0"
+    "node-hue-api": "^4.0.9",
+    "sonos": "^1.14.0",
+    "spotify-web-api-node": "^4.0.0",
+    "node-forge": ">=0.10.0",
+    "bl": ">=2.2.1"
   }
 }
