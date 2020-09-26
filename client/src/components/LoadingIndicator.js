@@ -4,8 +4,8 @@ import './LoadingIndicator.scss';
 
 const LoadingIndicator = () => {
 	return (
-		<div class="lds-container">
-			<div class="lds-ripple">
+		<div className="lds-container">
+			<div className="lds-ripple">
 				<div></div>
 				<div></div>
 			</div>

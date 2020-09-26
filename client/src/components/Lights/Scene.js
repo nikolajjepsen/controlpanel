@@ -15,7 +15,7 @@ const Scene = (props) => {
 	};
 
 	return (
-		<div className="scene mb-2">
+		<div className="scene mb-2" key={props.id}>
 			<div className="scene-details" onClick={() => props.onClick(props.id)}>
 				<div className="activate-badge">
 					<Power />

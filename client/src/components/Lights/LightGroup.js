@@ -10,7 +10,7 @@ import {
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { Row, Col } from 'react-bootstrap';
 import Section from './../Section/Section';
-
+import LoadingIndicator from './../LoadingIndicator';
 import backend from '../../config/axios.config';
 
 import Light from './Light';
@@ -77,12 +77,6 @@ const LightGroup = (props) => {
 		}
 	};
 
-	const LoadingIndicator = () => {
-		if (props.expanded && isLoading) {
-			return <p className="loading">Loading</p>;
-		}
-	};
-
 	const Lights = () => {
 		if (props.expanded && expandedGroupLights.length > 0) {
 			return (
@@ -111,7 +105,7 @@ const LightGroup = (props) => {
 			return (
 				<Section title="Scenes">
 					{expandedGroupScenes.map((scene) => (
-						<Col lg={3} xs={6} key={scene.id}>
+						<Col lg={3} xs={6}>
 							<Scene
 								id={scene.id}
 								name={scene.name}
@@ -152,7 +146,7 @@ const LightGroup = (props) => {
 				</div>
 				<Row className="mx-3">
 					<Col xs={12}>
-						{isLoading && <LoadingIndicator />}
+						{isLoading && props.expanded && <LoadingIndicator />}
 						{!isLoading && (
 							<>
 								<Lights />
