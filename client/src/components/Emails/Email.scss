@@ -1,0 +1,28 @@
+@import '../../assets/styles/colors';
+
+.emails {
+	width: 100%;
+	background-color: #fff;
+	border-radius: 2px;
+	padding: 16px 20px;
+	box-shadow: 2px 2px 7px #d7d8da, -2px -2px 7px #fdfeff;
+
+	.email {
+		padding: 8px;
+		&:not(:last-child) {
+			border-bottom: 1px $grey solid;
+		}
+
+		.subject {
+			flex: 1;
+			color: $pink;
+		}
+
+		.details {
+			display: flex;
+			flex-wrap: wrap;
+			align-items: center;
+			justify-content: space-between;
+		}
+	}
+}

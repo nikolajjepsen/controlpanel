@@ -4,16 +4,19 @@ import TaskCreate from './TaskCreate';
 import TaskItem from './TaskItem';
 
 import './Task.scss';
+import LoadingIndicator from '../LoadingIndicator';
 
 const TasksList = () => {
 	const [currentSubTab, setCurrentSubTab] = useState('task');
 	const [items, setItems] = useState(false);
+	const [isLoading, setIsLoading] = useState();
 
 	useEffect(() => {
+		setIsLoading(true);
 		const fetchTasks = async () => {
 			const tasks = await backend.get('/tasks/');
-			console.log(tasks);
 			setItems(tasks.data);
+			setIsLoading(false);
 		};
 		fetchTasks();
 	}, []);
@@ -76,7 +79,8 @@ const TasksList = () => {
 				</h2>
 			</div>
 			<div className="list">
-				{items &&
+				{!isLoading &&
+					items &&
 					items.map((element) =>
 						element.type === currentSubTab ? (
 							<TaskItem
@@ -93,6 +97,7 @@ const TasksList = () => {
 							''
 						),
 					)}
+				{(isLoading || !items) && <LoadingIndicator />}
 				<TaskCreate type={currentSubTab} onCreate={handleCreate} />
 			</div>
 		</div>

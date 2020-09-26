@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
@@ -10,14 +10,13 @@ import Player from './../components/Player/Player.js';
 import LightGroupList from './../components/Lights/LightGroupList';
 import FavoriteScenesList from './../components/Lights/FavoriteScenesList';
 
-const Home = () => {
+const Home = ({ showGreeting }) => {
+	useEffect(() => {
+		showGreeting(true);
+	}, []);
+
 	return (
 		<>
-			<Row>
-				<Col lg={12}>
-					<Clock withGreeting={true} />
-				</Col>
-			</Row>
 			<Row className="mt-4">
 				<Col sm={12} md={6} lg={4}>
 					<Row>

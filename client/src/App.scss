@@ -11,27 +11,35 @@ body {
 	background-color: $charcoal;
 	color: $white;
 }
-h1, h2, h3 {
+h1,
+h2,
+h3 {
 	color: $charcoal;
 	margin: 0;
 }
 .wrapper {
 	padding: 0 40px;
 }
-.left-container, .right-container {
+.left-container,
+.right-container {
 	min-height: 100vh;
 }
 .right-container-enter {
-  opacity: 0;
+	opacity: 0;
 }
 .right-container-enter-active {
-  opacity: 1;
-  transition: opacity 200ms;
+	opacity: 1;
+	transition: opacity 200ms;
 }
 .right-container-exit {
-  opacity: 1;
+	opacity: 1;
 }
 .right-container-exit-active {
-  opacity: 0;
-  transition: opacity 200ms;
+	opacity: 0;
+	transition: opacity 200ms;
+}
+@media (min-width: 1200px) {
+	.container {
+		max-width: 85vw;
+	}
 }
