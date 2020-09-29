@@ -1,5 +1,5 @@
 # controlpanel
-Controls music and lights, displays last 10 emails, calendar entries; todos and shopping list
+Controls music and lights through Spotify, Sonos and Hue APIs, Google API for e-mail and calendar; todos and shopping list
 
 
 ## How to run
