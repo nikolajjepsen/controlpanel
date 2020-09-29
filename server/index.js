@@ -49,6 +49,7 @@ app.use('/tasks', tasks);
 
 app.use(function (err, req, res, next) {
 	console.error(err.stack);
+	console.log(err.message);
 	let code = 500;
 	if (err.statusCode) code = err.statusCode;
 	res.status(code).send({ message: err.message });

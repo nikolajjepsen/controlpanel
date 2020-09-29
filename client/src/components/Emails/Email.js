@@ -6,7 +6,7 @@ const Email = (props) => {
 	return (
 		<div className="email">
 			<div className="details">
-				<span class="subject">{props.subject}</span>
+				<span className="subject">{props.subject}</span>
 				<EmailDate dateString={props.date} />
 			</div>
 			<div className="from">

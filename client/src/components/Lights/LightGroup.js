@@ -24,11 +24,13 @@ const LightGroup = (props) => {
 
 	const toggleLight = async (e, lightId) => {
 		e.stopPropagation();
+		setIsLoading(true);
 		await backend.get(`/hue/lights/${lightId}/toggle`);
 		setShouldFetchLights(!shouldFetchLights);
 	};
 
 	const activateScene = async (sceneId) => {
+		setIsLoading(true);
 		await backend.get(`/hue/scenes/${sceneId}/activate`);
 		setShouldFetchLights(!shouldFetchLights);
 	};
