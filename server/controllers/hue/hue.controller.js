@@ -109,7 +109,6 @@ const listLights = async (req, res, next) => {
 	let lights = await authenticatedApi.lights.getAll();
 
 	if (lightsArray.length > 0) {
-		// filter the lights; keep all needed
 		lights = lights.filter((light) => lightsArray.includes(light._data.id.toString()));
 	}
 

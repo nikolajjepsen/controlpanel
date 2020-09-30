@@ -1,0 +1,36 @@
+.player-bar {
+	display: flex;
+	flex-direction: row;
+	padding: 12px 10vw;
+
+	.meta-content {
+		display: flex;
+		flex-direction: row;
+		justify-content: center;
+		align-items: center;
+
+		.album-image {
+			margin-right: 12px;
+
+			img {
+				border-radius: 0;
+				width: clamp(50px, 5vw, 50px);
+			}
+		}
+		.track-details .artists {
+			justify-content: start;
+			.artist {
+				text-transform: initial;
+			}
+		}
+	}
+
+	.track-progression {
+		flex-grow: 1;
+	}
+
+	.volume-controls {
+		display: flex;
+		align-items: center;
+	}
+}

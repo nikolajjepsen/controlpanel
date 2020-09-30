@@ -1,7 +1,9 @@
 import React from 'react';
 
-export const ButtonList = (props) => {
-	return <div className={`icon-list ${props.listClass}`}>{props.children}</div>;
+import './Button.scss';
+
+export const ButtonList = ({ className, children }) => {
+	return <div className={`button-list ${className}`}>{children}</div>;
 };
 
 export const Button = (props) => {
@@ -9,14 +11,13 @@ export const Button = (props) => {
 	// Note: Should probably use an actual button element, but for now this is fine.
 	// Accessability is not really a concern.
 	return (
-		<div
-			className={`icon-container ${buttonClass} ${buttonSize || ''}${
-				isActive ? ' active' : ''
-			}`}
+		<button
 			onClick={onClick}
+			className={`btn btn-rounded btn-neumorphism ${buttonClass || ''} ${
+				isLoading ? ' loading' : ''
+			}`}
 		>
-			<div className={`button ${buttonClass || ''} ${isLoading ? ' loading' : ''}`}></div>
 			{icon}
-		</div>
+		</button>
 	);
 };

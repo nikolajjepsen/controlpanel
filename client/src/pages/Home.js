@@ -21,7 +21,7 @@ const Home = ({ showGreeting }) => {
 				<Col sm={12} md={6} lg={4}>
 					<Row>
 						<Col xs={12}>
-							<Player />
+							<Player size="large" />
 						</Col>
 						<Col xs={12}>
 							<TaskList />

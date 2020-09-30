@@ -4,7 +4,6 @@ import { Container, Col, Row } from 'react-bootstrap';
 
 import 'bootstrap/dist/css/bootstrap.min.css';
 import './App.scss';
-import './components/Button/Button.css';
 
 import Home from './pages/Home';
 import Planning from './pages/Planning';

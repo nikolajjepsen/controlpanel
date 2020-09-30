@@ -38,6 +38,11 @@ h3 {
 	opacity: 0;
 	transition: opacity 200ms;
 }
+
+.row.planning {
+	margin-bottom: 200px;
+}
+
 @media (min-width: 1200px) {
 	.container {
 		max-width: 85vw;
