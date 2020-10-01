@@ -12,37 +12,37 @@ import Navigation from './components/Navigation';
 import Clock from './components/Clock/Clock';
 
 const App = () => {
-	const [showClockGreeting, setShowClockGreeting] = useState(true);
+    const [showClockGreeting, setShowClockGreeting] = useState(true);
 
-	return (
-		<Container>
-			<Router>
-				<Row>
-					<Col lg={12}>
-						<Clock withGreeting={showClockGreeting} />
-					</Col>
-					<Col sm={12}>
-						<Navigation />
-					</Col>
-				</Row>
-				<Row>
-					<Col xl={12} sm={12}>
-						<Switch>
-							<Route path="/" exact>
-								<Home showGreeting={setShowClockGreeting} />
-							</Route>
-							<Route path="/planning">
-								<Planning showGreeting={setShowClockGreeting} />
-							</Route>
-							<Route path="*">
-								<NotFound />
-							</Route>
-						</Switch>
-					</Col>
-				</Row>
-			</Router>
-		</Container>
-	);
+    return (
+        <Container>
+            <Router>
+                <Row>
+                    <Col lg={12}>
+                        <Clock withGreeting={showClockGreeting} />
+                    </Col>
+                    <Col sm={12}>
+                        <Navigation />
+                    </Col>
+                </Row>
+                <Row>
+                    <Col xl={12} sm={12}>
+                        <Switch>
+                            <Route path="/" exact>
+                                <Home showGreeting={setShowClockGreeting} />
+                            </Route>
+                            <Route path="/planning">
+                                <Planning showGreeting={setShowClockGreeting} />
+                            </Route>
+                            <Route path="*">
+                                <NotFound />
+                            </Route>
+                        </Switch>
+                    </Col>
+                </Row>
+            </Router>
+        </Container>
+    );
 };
 
 export default App;

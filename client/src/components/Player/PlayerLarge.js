@@ -14,7 +14,6 @@ const PlayerLarge = ({
 	progression,
 	...props
 }) => {
-	console.log(progression);
 	return (
 		<>
 			{currentTrack && (
@@ -91,6 +90,7 @@ const PlayerLarge = ({
 											icon={props.volumeIcon}
 											onClick={() => {
 												props.onSetVolume(0);
+												props.onUpdateVolume(true);
 											}}
 										/>
 										<div className="volume-control">

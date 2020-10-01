@@ -8,10 +8,7 @@
     padding: 6px 10px;
     border-radius: 3px;
     background: #f8f8f8;
-    box-shadow:
-        2px 2px 7px #d7d8da,
-        -2px -2px 7px #fdfeff,
-        inset 0 0 0 #ffffff00,
+    box-shadow: 2px 2px 7px #d7d8da, -2px -2px 7px #fdfeff, inset 0 0 0 #ffffff00,
         inset 0 0 0 #ffffff00;
     transition: box-shadow 200ms ease-in-out;
     cursor: pointer;
@@ -22,13 +19,13 @@
         align-items: center;
         justify-content: flex-start;
         height: max-content;
-        
+
         .name {
             color: $charcoal;
             font-size: 12px;
             transition: color 200ms ease-in;
         }
-    
+
         .activate-badge {
             padding: 7px;
             border-radius: 50%;
@@ -36,7 +33,7 @@
             display: grid;
             place-items: center;
             margin-right: 6px;
-    
+
             svg {
                 width: 22px;
                 height: 22px;
@@ -70,10 +67,7 @@
     }
 
     &:hover {
-        box-shadow: 
-        2px 2px 7px #ffffff00,
-        -2px -2px 7px #ffffff00,
-        inset -2px -2px 7px #d7d8da,
-        inset -2px -2px 7px #fdfeff;
+        box-shadow: 2px 2px 7px #ffffff00, -2px -2px 7px #ffffff00, inset -2px -2px 7px #d7d8da,
+            inset -2px -2px 7px #fdfeff;
     }
 }

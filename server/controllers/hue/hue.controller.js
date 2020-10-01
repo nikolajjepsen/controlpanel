@@ -74,12 +74,10 @@ const discoverBridge = async () => {
 };
 
 const connectLocally = async () => {
-	console.time();
 	const config = getConfig();
 	if (config.ip) {
 		try {
 			const api = await hue.api.createLocal(config.ip).connect(config.username);
-			console.timeEnd();
 			return api;
 		} catch (err) {
 			console.log('Cached IP is no longer valid. Discovering bridges ...');
@@ -223,11 +221,6 @@ const getGroupScenes = async (req, res, next) => {
 	res.send(groupScenes);
 };
 
-const getScene = async (sceneId) => {
-	const connectedApi = await connectLocally();
-	return await connectedApi.scenes.getScene(sceneId);
-};
-
 const activateScene = async (req, res, next) => {
 	const connectedApi = await connectLocally();
 	try {
@@ -240,6 +233,11 @@ const activateScene = async (req, res, next) => {
 	}
 };
 
+const getScene = async (sceneId) => {
+	const connectedApi = await connectLocally();
+	return await connectedApi.scenes.getScene(sceneId);
+};
+
 const listFavoriteScenes = async (req, res, next) => {
 	let favorites;
 	try {
@@ -247,12 +245,23 @@ const listFavoriteScenes = async (req, res, next) => {
 	} catch (error) {
 		next(new Error('Unable to fetch favorite scenes: ' + JSON.stringify(error)));
 	}
-
+	//console.log('Favorites from DB', favorites);
 	if (favorites.length == 0) {
 		return res.status(404).json([]);
 	}
 	try {
-		const scenes = await Promise.all(favorites.map((favorite) => getScene(favorite.sceneId)));
+		const scenes = await Promise.all(
+			favorites.map((favorite) => {
+				/*console.log(
+					'Favorite and hue info within map',
+					favorite,
+					getScene(favorite.sceneId),
+				);*/
+				return getScene(favorite.sceneId);
+			}),
+		);
+
+		//console.log('All found scenes with attached hue info: ', scenes);
 		res.json(scenes);
 	} catch (error) {
 		next(error);

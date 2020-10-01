@@ -1,38 +1,38 @@
 @import '../assets/styles/colors';
 
 nav {
-	width: 100%;
-	display: flex;
-	justify-content: center;
-	align-items: center;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 
-	ul {
-		display: flex;
-		justify-content: center;
-		flex-direction: row;
-		list-style: none;
-		padding-left: 0;
+    ul {
+        display: flex;
+        justify-content: center;
+        flex-direction: row;
+        list-style: none;
+        padding-left: 0;
 
-		li:not(:first-child) {
-			margin-left: 25px;
-		}
+        li:not(:first-child) {
+            margin-left: 25px;
+        }
 
-		li > a {
-			padding: 10px;
-			border-radius: 50%;
-			display: block;
-			color: $muted-grey;
-			background-color: $grey;
-			transition: box-shadow 200ms cubic-bezier(1, 1.09, 0.16, 1.1),
-				color 150ms cubic-bezier(1, 1.09, 0.16, 1.1);
-			box-shadow: 8px 4px 16px #d7d8da, -8px -4px 16px #fdfeff, inset 0 0 0 #ffffff00,
-				inset 0 0 0 #ffffff00;
+        li > a {
+            padding: 10px;
+            border-radius: 50%;
+            display: block;
+            color: $muted-grey;
+            background-color: $grey;
+            transition: box-shadow 200ms cubic-bezier(1, 1.09, 0.16, 1.1),
+                color 150ms cubic-bezier(1, 1.09, 0.16, 1.1);
+            box-shadow: 8px 4px 16px #d7d8da, -8px -4px 16px #fdfeff, inset 0 0 0 #ffffff00,
+                inset 0 0 0 #ffffff00;
 
-			&:hover {
-				color: $pink;
-				box-shadow: 0px 0px 0px #ffffff00, 0px 0px 0px #ffffff00, inset 2px 2px 17px #d7d8da,
-					inset -2px -2px 17px #fdfeff;
-			}
-		}
-	}
+            &:hover {
+                color: $pink;
+                box-shadow: 0px 0px 0px #ffffff00, 0px 0px 0px #ffffff00, inset 2px 2px 17px #d7d8da,
+                    inset -2px -2px 17px #fdfeff;
+            }
+        }
+    }
 }

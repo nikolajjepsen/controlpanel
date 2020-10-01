@@ -2,18 +2,18 @@ import React from 'react';
 import EmailSender from './EmailSender';
 import EmailDate from './EmailDate';
 
-const Email = (props) => {
-	return (
-		<div className="email">
-			<div className="details">
-				<span className="subject">{props.subject}</span>
-				<EmailDate dateString={props.date} />
-			</div>
-			<div className="from">
-				<EmailSender fromString={props.from} />
-			</div>
-		</div>
-	);
+const Email = ({ subject, date, from }) => {
+    return (
+        <div className="email">
+            <div className="details">
+                <span className="subject">{subject}</span>
+                <EmailDate dateString={date} />
+            </div>
+            <div className="from">
+                <EmailSender fromString={from} />
+            </div>
+        </div>
+    );
 };
 
 export default Email;

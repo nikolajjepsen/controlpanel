@@ -1,44 +1,44 @@
 @import '../../assets/styles/colors';
 
 .button-list {
-	display: flex;
-	flex-direction: row;
-	justify-content: center;
-	align-items: center;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
 
-	.btn:not(:first-of-type) {
-		margin-left: 12px;
-	}
+    .btn:not(:first-of-type) {
+        margin-left: 12px;
+    }
 }
 
 .btn {
-	display: flex;
-	align-items: center;
-	justify-content: center;
-	padding: 8px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 8px;
 
-	height: min-content;
-	width: auto;
+    height: min-content;
+    width: auto;
 
-	svg {
-		color: $muted-grey;
-	}
+    svg {
+        color: $muted-grey;
+    }
 
-	&:hover svg {
-		color: $pink;
-	}
+    &:hover svg {
+        color: $pink;
+    }
 }
 
 .btn-neumorphism {
-	box-shadow: 4px 4px 8px #d7d8da, -4px -4px 8px #fdfeff, inset 0 0 0 #ffffff00,
-		inset 0 0 0 #ffffff00;
+    box-shadow: 4px 4px 8px #d7d8da, -4px -4px 8px #fdfeff, inset 0 0 0 #ffffff00,
+        inset 0 0 0 #ffffff00;
 
-	&:hover {
-		box-shadow: 0px 0px 0px #ffffff00, 0px 0px 0px #ffffff00, inset 8px 8px 16px #d7d8da,
-			inset -8px -8px 16px #fdfeff;
-	}
+    &:hover {
+        box-shadow: 0px 0px 0px #ffffff00, 0px 0px 0px #ffffff00, inset 8px 8px 16px #d7d8da,
+            inset -8px -8px 16px #fdfeff;
+    }
 }
 
 .btn-rounded {
-	border-radius: 50%;
+    border-radius: 50%;
 }

@@ -11,36 +11,36 @@ import LightGroupList from './../components/Lights/LightGroupList';
 import FavoriteScenesList from './../components/Lights/FavoriteScenesList';
 
 const Home = ({ showGreeting }) => {
-	useEffect(() => {
-		showGreeting(true);
-	}, []);
+    useEffect(() => {
+        showGreeting(true);
+    }, []);
 
-	return (
-		<>
-			<Row className="mt-4">
-				<Col sm={12} md={6} lg={4}>
-					<Row>
-						<Col xs={12}>
-							<Player size="large" />
-						</Col>
-						<Col xs={12}>
-							<TaskList />
-						</Col>
-					</Row>
-				</Col>
-				<Col sm={12} md={6} lg={8}>
-					<Row>
-						<Col xs={12}>
-							<LightGroupList />
-						</Col>
-						<Col xs={12}>
-							<FavoriteScenesList />
-						</Col>
-					</Row>
-				</Col>
-			</Row>
-		</>
-	);
+    return (
+        <>
+            <Row className="mt-4">
+                <Col sm={12} md={6} lg={4}>
+                    <Row>
+                        <Col xs={12}>
+                            <Player size="large" />
+                        </Col>
+                        <Col xs={12}>
+                            <TaskList />
+                        </Col>
+                    </Row>
+                </Col>
+                <Col sm={12} md={6} lg={8}>
+                    <Row>
+                        <Col xs={12}>
+                            <LightGroupList />
+                        </Col>
+                        <Col xs={12}>
+                            <FavoriteScenesList />
+                        </Col>
+                    </Row>
+                </Col>
+            </Row>
+        </>
+    );
 };
 
 export default Home;

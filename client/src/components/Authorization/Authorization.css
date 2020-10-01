@@ -1,47 +1,39 @@
 .icon-list.auth {
-	position: absolute;
-	top: 0;
-	left: 0;
+    position: absolute;
+    top: 0;
+    left: 0;
 }
 .icon-list.auth .icon-container:not(:first-of-type) {
-	margin-left: 8px;
+    margin-left: 8px;
 }
 .icon-list.auth .icon-container {
-	width: 30px;
-	height: 30px;
+    width: 30px;
+    height: 30px;
 }
 .icon-list .icon-container .button.auth {
-	width: 30px;
-	height: 30px;
-	box-shadow: 4px 4px 8px #d7d8da,
-		-4px -4px 8px #fdfeff,
-		inset 0 0 0 #ffffff00,
-		inset 0 0 0 #ffffff00;
+    width: 30px;
+    height: 30px;
+    box-shadow: 4px 4px 8px #d7d8da, -4px -4px 8px #fdfeff, inset 0 0 0 #ffffff00,
+        inset 0 0 0 #ffffff00;
 }
 .icon-list.auth .icon-container svg {
-	top: 16px;
-	left: 16px;
+    top: 16px;
+    left: 16px;
 }
 .icon-list.auth .icon-container:hover .auth-button {
-	box-shadow: 
-		0px 0px 0px #ffffff00,
-		0px 0px 0px #ffffff00,
-		inset 4px 4px 8px #d7d8da,
-		inset -4px -4px -8px #fdfeff;
+    box-shadow: 0px 0px 0px #ffffff00, 0px 0px 0px #ffffff00, inset 4px 4px 8px #d7d8da,
+        inset -4px -4px -8px #fdfeff;
 }
 .icon-list.auth .icon-container:hover svg {
-	color: #3675c8;
+    color: #3675c8;
 }
 .icon-list.auth .icon-container.active .auth-button {
-	box-shadow: 
-		0px 0px 0px #ffffff00,
-		0px 0px 0px #ffffff00,
-		inset 4px 4px 8px #d7d8da,
-		inset -4px -4px 8px #fdfeff;
+    box-shadow: 0px 0px 0px #ffffff00, 0px 0px 0px #ffffff00, inset 4px 4px 8px #d7d8da,
+        inset -4px -4px 8px #fdfeff;
 }
 .icon-list.auth .icon-container.active svg {
-	color: #36c862;
+    color: #36c862;
 }
 .icon-list.auth .icon-container.active:hover svg {
-	color: #3675c8;
+    color: #3675c8;
 }
